@@ -1,0 +1,458 @@
+@import url(./common.css);
+
+
+/* 헤더 */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 100;
+  transition: 0.4s;
+
+  .headerInner {
+    max-width: 1600px;
+    height: 110px;
+    margin: 0 auto;
+    padding: 0 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-sizing: border-box;
+
+    >a {
+      font-family: 'NanumSquareNeoHeavy';
+      font-size: 20px;
+      color: #111;
+      text-decoration: none;
+
+      span {
+        color: #929292;
+      }
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+
+      >a {
+        font-family: 'NanumSquareNeoBold';
+        font-size: 17px;
+        color: #111;
+        text-decoration: none;
+        transition: .3s;
+
+        &:hover {
+          color: #1c6eda;
+        }
+      }
+    }
+  }
+
+  &.active {
+    transform: translateY(-100%);
+  }
+}
+
+
+
+
+/* 메인(인트로) */
+.intro {
+  padding-top: 120px;
+  padding-bottom: 10%;
+
+  .introInner {
+    position: relative;
+    max-width: 1600px;
+    width: 100%;
+    height: 75vh;
+    margin: 0 auto;
+    padding: 0 60px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .mainAbsolute {
+      position: absolute;
+      top: 0;
+      right: 60px;
+      width: 55%;
+      height: calc(80vh - 117px);
+      padding-top: 117px;
+
+      .mainImg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 2%;
+        width: 100%;
+        height: auto;
+      }
+
+      .shadow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(calc(-50% - 10px));
+        right: 0;
+        width: 100%;
+        z-index: -1;
+      }
+
+      .arrowBottom {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 10;
+      }
+    }
+
+    .main {
+      z-index: 1;
+
+      .mainTitle {
+
+        >p {
+          color: #666666;
+          font-size: 22px;
+          padding-bottom: 20px;
+        }
+
+        >div {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          >b {
+            font-size: 60px;
+          }
+        }
+      }
+
+      >button {
+        position: relative;
+        padding-top: 90px;
+        display: flex;
+        gap: 5px;
+        font-size: 18px;
+        color: #1c6eda;
+
+        >span {
+          font-family: 'NanumSquareNeoBold';
+        }
+
+      }
+
+      /* button::after {
+      content: '';
+      화살표 svg 들어가는 곳
+    } */
+
+      >button::before {
+        content: '';
+        position: absolute;
+        bottom: -13px;
+        left: 80px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        display: block;
+        background-color: #cae1ff;
+        transition: 0.3s;
+        z-index: -1;
+      }
+
+      >button:hover::before {
+        transform: scale(1.4);
+      }
+    }
+  }
+}
+
+
+/* 배경 그라데이션 */
+.backColor {
+  background: linear-gradient(180deg, #fff 0%, #F4F0EA 75.64%);
+  overflow: hidden;
+  z-index: -2;
+}
+
+
+/* 회사소개 */
+.about {
+  padding-top: 100px;
+  height: 150vh;
+
+  .aboutInner {
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 60px;
+    box-sizing: border-box;
+
+    .aboutTtitle {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%);
+
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+
+      width: 100%;
+
+      >b {
+        font-size: 42px;
+      }
+    }
+
+    .aboutFigure {
+      display: flex;
+      justify-content: space-between;
+
+      .aboutInfo {
+        width: 472px;
+
+        >p {
+          width: 100%;
+          height: 600px;
+
+          >img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        >figcaption {
+          color: #666666;
+          line-height: 1.7;
+          margin-top: 40px;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+/* 사업소개 타이틀 */
+.bizTitle {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  >b {
+    font-size: 42px;
+    z-index: 1;
+  }
+
+  >b:before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    left: -40%;
+    right: 0;
+    min-width: 180%;
+    height: 180%;
+    min-height: 180vh;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 3000px 3000px 0 0;
+    z-index: -1;
+  }
+}
+
+
+/* 사업소개 */
+.info {
+  padding-top: 200px;
+
+  .infoInner {
+
+    .fixContent {
+      display: flex;
+      justify-content: space-between;
+
+      .infoText {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        line-height: 1.7;
+
+
+        .infoDetail {
+
+          >b {
+            font-size: 32px;
+          }
+
+          >figure {
+            padding-top: 40px;
+
+            >img {}
+
+            >figcaption {
+              padding: 30px 0;
+              color: #666666;
+            }
+          }
+
+        }
+
+        >button {
+          display: flex;
+          color: #1c6eda;
+
+          >span {
+            font-size: 14px;
+          }
+
+          >svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      >p {
+        width: 50%;
+
+        >img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+
+        }
+      }
+    }
+  }
+}
+
+
+
+/* 인재채용 */
+.apply {
+  position: relative;
+  color: white;
+
+  >img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .applyContent {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    width: 1600px;
+    padding: 0 60px;    
+    box-sizing: border-box;
+    @media (max-width:1600px) {
+      width: 100%;
+    }
+
+
+    .applyText {
+      max-width: 598px;
+      padding-bottom: 30px;
+
+      >b {
+        font-size: 40px;
+        line-height: 1.6;
+      }
+
+      >p {
+        font-size: 18px;
+        font-family: 'NanumSquareNeoBold';
+        line-height: 1.6;
+      }
+    }
+
+    >button {
+      color: white;
+      display: flex;
+      gap: 5px;
+      font-family: 'NanumSquareNeoBold';
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: -14px;
+        left: 180px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        display: block;
+        background-color: rgba(255, 255, 255, 0.2);
+        transition: 0.3s;
+        z-index: -1;
+      }
+
+      &:hover::before {
+        transform: scale(1.4);
+      }
+    }
+  }
+}
+
+
+
+
+/* 푸터 */
+footer {
+  max-width: 1600px;
+  padding: 40px 60px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  
+  .bottomNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+
+    .footerTitle {
+      
+      >p {
+        font-size: 40px;
+        line-height: 1.7;
+      }
+    }
+
+    >ul {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      font-family: 'NanumSquareNeoBold';
+
+    }
+  }
+
+  .add {
+
+    >address {
+      display: flex;
+
+      >dl {
+        display: flex;
+        flex-direction: column;
+        >dt {}
+        >dd {}
+      }
+    }
+
+    .copyright {}
+
+  }
+}
