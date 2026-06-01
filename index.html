@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./common.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis"></script>
 
     <script defer src="./javaScript.js"></script>
     <title>현주데코</title>
@@ -68,15 +71,15 @@
         <section class="about">
             <div class="aboutInner">
                 <div class="aboutTtitle">
-                    <b>모두가 공간과 삶에 행복을 채워갈 수 있도록</b>
-                    <b>인테리어 경험을 제공합니다</b>
+                    <b>모두가 공간과 삶에 행복을 채워갈 수 있도록
+                    <br>인테리어 경험을 제공합니다</b>
                 </div>
                 <div class="aboutFigure">
-                    <figure class="aboutInfo">
+                    <figure class="aboutInfo parallax">
                         <p><img src="./images/room-1.jpg" alt=""></p>
                         <figcaption>현주데코는 인테리어를 하며 떠오르는 의문과 걱정을 해소할 수 있도록 다양한 시도를 통해 변화를 주도합니다.</figcaption>
                     </figure>
-                    <figure class="aboutInfo">
+                    <figure class="aboutInfo parallax">
                         <p><img src="./images/room-2.jpg" alt=""></p>
                         <figcaption>우리는 많은 시간을 주거 공간에서 보냅니다. 집은 삶의 만족과 안정감을 줄 뿐 아니라, 나를 표현하고 취향을 드러내는 공간입니다.
                         </figcaption>
@@ -90,73 +93,13 @@
          ------------ 사업영역 소개 --------------
          ======================================= -->
         <div class="bizTitle">
-
             <b>현주데코의 <br>사업영역을 소개합니다</b>
+            <span></span>
         </div>
     </div>
     <section class="info">
         <div class="infoInner">
-            <div class="fixContent">
-                <div class="infoText">
-                    <div class="infoDetail">
-                        <b>자재유통</b>
-                        <figure>
-                            <img src="./images/step-1.jpg" alt="">
-                            <figcaption>인테리어에 대한 전문 지식과 노하우를 바탕으로 최고의 <br> 품질을 가진 실내 건축자재만을 엄선하여 유통합니다.</figcaption>
-                        </figure>
-                    </div>
-                    <button>
-                        <span>자세히보기</span>
-                        <svg width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M10.157 12.711L4.5 18.368L3.086 16.954L8.036 12.004L3.086 7.05401L4.5 5.64001L10.157 11.297C10.3445 11.4845 10.4498 11.7389 10.4498 12.004C10.4498 12.2692 10.3445 12.5235 10.157 12.711Z"
-                                fill="currentColor" />
-                        </svg>
-                    </button>
-                </div>
-                <p><img src="./images/type-1.jpg" alt=""></p>
-            </div>
-            <div class="fixContent">
-                <div class="infoText">
-                    <div class="infoDetail">
-                        <b>자재유통</b>
-                        <figure>
-                            <img src="./images/step-1.jpg" alt="">
-                            <figcaption>인테리어에 대한 전문 지식과 노하우를 바탕으로 최고의<br> 품질을 가진 실내 건축자재만을 엄선하여 유통합니다.</figcaption>
-                        </figure>
-                    </div>
-                    <button>
-                        <span>자세히보기</span>
-                        <svg width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M10.157 12.711L4.5 18.368L3.086 16.954L8.036 12.004L3.086 7.05401L4.5 5.64001L10.157 11.297C10.3445 11.4845 10.4498 11.7389 10.4498 12.004C10.4498 12.2692 10.3445 12.5235 10.157 12.711Z"
-                                fill="currentColor" />
-                        </svg>
-                    </button>
-                </div>
-                <p><img src="./images/type-1.jpg" alt=""></p>
-            </div>
-            <div class="fixContent">
-                <div class="infoText">
-                    <div class="infoDetail">
-                        <b>자재유통</b>
-                        <figure>
-                            <img src="./images/step-1.jpg" alt="">
-                            <figcaption>인테리어에 대한 전문 지식과 노하우를 바탕으로 최고의<br> 품질을 가진 실내 건축자재만을 엄선하여 유통합니다.</figcaption>
-                        </figure>
-                    </div>
-                    <button>
-                        <span>자세히보기</span>
-                        <svg width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M10.157 12.711L4.5 18.368L3.086 16.954L8.036 12.004L3.086 7.05401L4.5 5.64001L10.157 11.297C10.3445 11.4845 10.4498 11.7389 10.4498 12.004C10.4498 12.2692 10.3445 12.5235 10.157 12.711Z"
-                                fill="currentColor" />
-                        </svg>
-
-                    </button>
-                </div>
-                <p><img src="./images/type-1.jpg" alt=""></p>
-            </div>
+            <!-- 반복문 -->
         </div>
     </section>
 
@@ -223,13 +166,17 @@
                     <dt>대표번호</dt>
                     <dd>010-7590-8030</dd>
                 </dl>
+                <dl>
+                    <dt>사업자등록번호</dt>
+                    <dd>000-00-00000</dd>
+                </dl>
             </address>
             <div class="copyright">
-                <small>Copyright ⓒ 현주데코. All Rights Reserved.</small>
                 <div>
                     <a href="#">개인정보처리방침</a>
                     <a href="#">이용약관</a>
                 </div>
+                <small>Copyright ⓒ 현주데코. All Rights Reserved.</small>
             </div>
         </div>
     </footer>

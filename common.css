@@ -46,4 +46,11 @@ button {
   font: inherit;
 }
 
-figure {margin: 0;}
+figure,
+p,
+dl,
+dt,
+dd {
+  margin: 0;
+  padding: 0;
+}

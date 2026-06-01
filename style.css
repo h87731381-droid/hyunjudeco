@@ -173,9 +173,11 @@ header.active {
   flex-direction: column;
   text-align: center;
   width: 100%;
+  z-index: 1;
 }
 .about .aboutInner .aboutTtitle > b {
-  font-size: 42px;
+  font-size: 39px;
+  line-height: 1.5;
 }
 .about .aboutInner .aboutFigure {
   display: flex;
@@ -186,7 +188,7 @@ header.active {
 }
 .about .aboutInner .aboutFigure .aboutInfo > p {
   width: 100%;
-  height: 600px;
+  height: 90%;
 }
 .about .aboutInner .aboutFigure .aboutInfo > p > img {
   width: 100%;
@@ -201,26 +203,24 @@ header.active {
 /* 사업소개 타이틀 */
 .bizTitle {
   position: relative;
-  display: flex;
-  flex-direction: column;
   text-align: center;
+  z-index: 1;
 }
 .bizTitle > b {
   font-size: 42px;
   z-index: 1;
 }
-.bizTitle > b:before {
-  content: "";
+.bizTitle > span {
   position: absolute;
-  top: -150px;
+  top: 200px;
   left: -40%;
   right: 0;
-  min-width: 180%;
   height: 180%;
   min-height: 180vh;
+  min-width: 180%;
   margin: 0 auto;
   background: #fff;
-  border-radius: 3000px 3000px 0 0;
+  border-radius: 5000px 5000px 0 0;
   z-index: -1;
 }
 
@@ -229,8 +229,10 @@ header.active {
   padding-top: 200px;
 }
 .info .infoInner .fixContent {
+  position: relative;
   display: flex;
   justify-content: space-between;
+  height: 100vh;
 }
 .info .infoInner .fixContent .infoText {
   width: 50%;
@@ -247,6 +249,9 @@ header.active {
 .info .infoInner .fixContent .infoText .infoDetail > figure {
   padding-top: 40px;
 }
+.info .infoInner .fixContent .infoText .infoDetail > figure > img {
+  height: 100%;
+}
 .info .infoInner .fixContent .infoText .infoDetail > figure > figcaption {
   padding: 30px 0;
   color: #666666;
@@ -262,14 +267,24 @@ header.active {
   width: 20px;
   height: 20px;
 }
-.info .infoInner .fixContent > p {
+.info .infoInner .fixContent p {
   width: 50%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  transition: opacity 0.5s ease;
 }
-.info .infoInner .fixContent > p > img {
+.info .infoInner .fixContent p.active {
+  opacity: 1;
+}
+.info .infoInner .fixContent p > img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+  display: block;
 }
 
 /* 인재채용 */
@@ -334,7 +349,7 @@ header.active {
 /* 푸터 */
 footer {
   max-width: 1600px;
-  padding: 40px 60px;
+  padding: 80px 60px 100px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -342,21 +357,55 @@ footer .bottomNav {
   display: flex;
   justify-content: space-between;
   align-items: start;
+  padding-bottom: 100px;
 }
 footer .bottomNav .footerTitle > p {
   font-size: 40px;
   line-height: 1.7;
+  font-family: "NanumSquareNeoLight";
+}
+footer .bottomNav .footerTitle > p > b {
+  font-family: "NanumSquareNeoBold";
 }
 footer .bottomNav > ul {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 25px;
   font-family: "NanumSquareNeoBold";
+  text-align: end;
+}
+footer .add {
+  display: flex;
+  justify-content: space-between;
 }
 footer .add > address {
   display: flex;
+  gap: 30px;
 }
 footer .add > address > dl {
-  display: flex;
-  flex-direction: column;
+  line-height: 1.8;
+  font-size: 14px;
+}
+footer .add > address > dl > dt {
+  color: #666666;
+}
+footer .add > address > dl > dd {
+  font-family: "NanumSquareNeoBold";
+}
+footer .add .copyright {
+  line-height: 1.8;
+  text-align: end;
+}
+footer .add .copyright > div {
+  font-size: 13px;
+}
+footer .add .copyright > div > a:nth-of-type(1) {
+  font-family: "NanumSquareNeoBold";
+  color: #444444;
+}
+footer .add .copyright > div > a:nth-of-type(2) {
+  color: #666666;
+}
+footer .add .copyright > small {
+  color: #666666;
 }/*# sourceMappingURL=style.css.map */

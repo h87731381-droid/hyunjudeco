@@ -1,0 +1,20 @@
+[
+  {
+    "title": "자재유통",
+    "stepImage": "./images/step-1.jpg",
+    "mainImage": "./images/type-1.jpg",
+    "description": "인테리어에 대한 전문 지식과 노하우를 바탕으로 최고의 품질을 가진 실내 건축자재만을 엄선하여 유통합니다."
+  },
+  {
+    "title": "실내건축공사",
+    "stepImage": "./images/step-2.jpg",
+    "mainImage": "./images/type-2.jpg",
+    "description": "실내 건축물의 안정성과 기능성뿐 아니라 디자인까지 다양한 측면을 고려하여 완성도 높은 공간을 제시합니다."
+  },
+  {
+    "title": "앱·웹 및 AI",
+    "stepImage": "./images/step-3.jpg",
+    "mainImage": "./images/type-3.jpg",
+    "description": "중고마켓, 하자 점검 등 다양한 인테리어 플랫폼을 제작하여 고객의 사용 목적과 활용 방식에 맞는 최선의 서비스를 제공합니다."
+  }
+]

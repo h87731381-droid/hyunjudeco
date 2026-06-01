@@ -1,68 +1,202 @@
 
-/* 헤더 숨기기 펼치기 */
-const header = document.querySelector('header');
-let status = {y:0, dy:0, state:true}
+/* ------------------스크롤 스무스------------------ */
+const lenis = new Lenis({
+  duration: 1.2,
+  smoothWheel: true
+});
 
-
-window.addEventListener('scroll',function(){
-    status.y = window.pageYOffset;
-    status.state = (status.dy < status.y) ? true : false;
-    status.dy = status.y;
-
-
-    if(status.state){
-        header.classList.add('active');
-    }else{
-        header.classList.remove('active');
-    }
-})
-
-
-/* 이미지가 영역안에서 마우스 따라오기 */
-/* const box = document.querySelector(".mainImg");
-const shadow = document.querySelector(".shadow");
-
-box.addEventListener("mousemove", (e) => {
-  const rect = box.getBoundingClientRect();
-
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-
-  shadow.style.left = x - shadow.offsetWidth / 2 + "px";
-  shadow.style.top = y - shadow.offsetHeight / 2 + "px";
-}); */
-
-
-
-/* 스크롤 속도 조절 */
-let currentScroll = window.scrollY;
-let targetScroll = window.scrollY;
-const ease = 0.1; // 🚀 숫자가 작을수록 더 부드럽고 느리게 움직입니다 (0.01 ~ 0.1 추천)
-
-// 1. 휠 이벤트가 발생했을 때 목적지(target) 계산
-window.addEventListener('scroll', (e) => {
-  e.preventDefault(); // 브라우저의 기본 스크롤 기능 차단
-  
-  // e.deltaY는 휠을 내릴 때 +, 올릴 때 - 값을 가집니다.
-  // 뒤의 숫자(0.5)를 조절하여 한 번에 이동하는 속도/거리를 줄일 수 있습니다.
-  targetScroll += 120 * 0.9; 
-  
-  
-  // 스크롤이 화면 범위를 벗어나지 않도록 제한
-  //targetScroll = Math.max(0, Math.min(targetScroll, document.body.scrollHeight - window.innerHeight));
-}, { passive: false });
-
-// 2. 부드러운 감속 애니메이션 처리 (Lerp 공식 활용)
-function smoothScroll() {
-  // 현재 위치를 목적지 위치로 서서히 접근시킴
-  currentScroll += (currentScroll) * ease;
-  
-  // 계산된 위치로 실제 스크롤 이동
-  window.scrollTo(0, currentScroll);
-  
-  // 매 프레임마다 반복 실행
-  requestAnimationFrame(smoothScroll);
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
 }
 
-// 애니메이션 시작
-// smoothScroll();
+requestAnimationFrame(raf);
+
+
+
+/* ------------------헤더 숨기기 펼치기-------------------------- */
+const header = document.querySelector('header');
+
+let lastDirection = 0;
+lenis.on('scroll', ({ direction }) => {
+  if (direction !== lastDirection) {
+    lastDirection = direction;
+
+    // 아래로 스크롤 → 헤더 숨김
+    if (direction === 1) {
+      header.classList.add('active');
+    }
+
+    // 위로 스크롤 → 헤더 나타남
+    if (direction === -1) {
+      header.classList.remove('active');
+    }
+  }
+});
+
+
+
+
+/* ------------------카드 시차 스크롤 (회사소개영역)-------------------------- */
+lenis.on('scroll', ScrollTrigger.update);
+
+gsap.ticker.add((time) => {
+  lenis.raf(time * 1000);
+});
+
+gsap.ticker.lagSmoothing(0);
+
+
+gsap.utils.toArray(".parallax").forEach((item, idx) => {
+
+  let speed;
+
+  if (idx % 2 == 0) {
+    speed = -30;
+  } else {
+    speed = 30;
+  }
+
+  gsap.to(item, {
+    yPercent: speed,
+    ease: "none",
+
+    scrollTrigger: {
+      trigger: item,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true
+    }
+
+  });
+});
+
+
+
+
+
+
+
+
+/* ----------------배경 span 커지기 (사업영역 소개부분)-------------------------- */
+const span = document.querySelector('.bizTitle > span');
+lenis.on('scroll', ({ scroll }) => {
+  const scale = 1 + Math.pow(scroll / 2500, 2.5);
+  span.style.transform = `scale(${scale})`;
+});
+
+
+
+
+/* ---------------json 반복문하기 (자재유통 부분)-------------------------------- */
+fetch('./infoList.json')
+  .then(res => res.json())
+  .then(data => {
+    const infoList = document.querySelector('.infoInner');
+
+    data.forEach(item => {
+      infoList.innerHTML += `
+      <div class="fixContent">
+        <div class="infoText">
+          <div class="infoDetail">
+            <b>${item.title}</b>
+      
+            <figure>
+              <img src="${item.stepImage}" alt="${item.title}">
+              <figcaption>${item.description}</figcaption>
+            </figure>
+          </div>
+
+          <button>
+            <span>자세히보기</span>
+          </button>
+        </div>
+              
+        <p>
+          <img src="${item.mainImage}" alt="${item.title}">
+        </p>
+      </div>`;
+    });
+
+
+
+
+    
+const items = gsap.utils.toArray('.fixContent');
+
+items.forEach((item, i) => {
+  const image = item.querySelector('p');
+ if(i !==0){
+  gsap.set(image, {
+      opacity: 0
+    });
+ }
+
+  ScrollTrigger.create({
+    trigger: item,
+    start: 'top top',
+
+    onEnter: () => {
+      gsap.to(image, {
+        opacity: 1,
+        duration: 0.3
+      });
+    },
+
+    onLeaveBack: () => {
+       if(i !==0){
+          gsap.to(image, {
+            opacity: 0,
+            duration: 0.3
+          });
+       }
+    }
+  });
+
+
+   if(i !==2){
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top top',
+      end: 'bottom top',
+      pin: image,
+      pinSpacing: false
+    });
+  }else{
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top top',
+      end: 'top top',
+      pin: image,
+      pinSpacing: false
+    });
+  }
+
+  
+});
+
+
+
+    /* ------------------카드 겹치기 (자재유통 부분)-------------------------- */
+    const listItems = document.querySelectorAll('.fixContent > p');
+    // p가 처음에는 opacity가 0이었다가, 스크롤이 일정 지점에 도달하면 opacity가 1로 바뀌고 위치를 fix하여 화면 상단에 고정시키고 다음 p가 나타나면 앞전 p위에 겹쳐지는 효과
+
+    // function cardOverlap() {
+    //   const trigger = window.innerHeight * 0.75;
+
+    //   listItems.forEach((item, index) => {
+    //     const rect = item.getBoundingClientRect();
+
+    //     item.style.zIndex = index + 1;
+
+    //     if (rect.top <= trigger) {
+    //       item.classList.add('active');
+    //     } else {
+    //       item.classList.remove('active');
+    //     }
+    //   });
+    // }
+
+    // window.addEventListener('scroll', cardOverlap);
+    // cardOverlap();
+  })
