@@ -35,6 +35,12 @@ lenis.on('scroll', ({ direction }) => {
 });
 
 
+/* ------------------헤더 버거메뉴 펼치기-------------------------- */
+/* $(".menu").click(function(){
+  $(this).toggleClass("open");
+}); */
+
+
 
 
 /* ------------------카드 시차 스크롤 (회사소개영역)-------------------------- */
@@ -121,82 +127,110 @@ fetch('./infoList.json')
 
 
 
-    
-const items = gsap.utils.toArray('.fixContent');
 
-items.forEach((item, i) => {
-  const image = item.querySelector('p');
- if(i !==0){
-  gsap.set(image, {
-      opacity: 0
-    });
- }
+    const items = gsap.utils.toArray('.fixContent');
 
-  ScrollTrigger.create({
-    trigger: item,
-    start: 'top top',
+    items.forEach((item, i) => {
+      const image = item.querySelector('p');
+      if (i !== 0) {
+        gsap.set(image, {
+          opacity: 0
+        });
+      }
 
-    onEnter: () => {
-      gsap.to(image, {
-        opacity: 1,
-        duration: 0.3
-      });
-    },
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top top',
 
-    onLeaveBack: () => {
-       if(i !==0){
+        onEnter: () => {
           gsap.to(image, {
-            opacity: 0,
+            opacity: 1,
             duration: 0.3
           });
-       }
-    }
+        },
+
+        onLeaveBack: () => {
+          if (i !== 0) {
+            gsap.to(image, {
+              opacity: 0,
+              duration: 0.3
+            });
+          }
+        }
+      });
+
+
+      if (i !== 2) {
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top top',
+          end: 'bottom top',
+          pin: image,
+          pinSpacing: false
+        });
+      } else {
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top top',
+          end: 'top top',
+          pin: image,
+          pinSpacing: false
+        });
+      }
+    });
+  })
+
+
+
+
+
+
+/* ------------------이미지가 마우스 따라오기 (메인 이미지 그림자 부분)-------------------------- */
+
+/* const area = document.querySelector('.mainAbsolute');
+const shadow = document.querySelector('.shadow');
+
+area.addEventListener('mousemove', e => {
+  const rect = area.getBoundingClientRect();
+
+  gsap.to(shadow, {
+    x: (e.clientX - rect.left - rect.width / 2) * 0.03,
+    y: (e.clientY - rect.top - rect.height / 2) * 0.03,
+    duration: 0.6,
+    ease: 'power3.out'
   });
-
-
-   if(i !==2){
-    ScrollTrigger.create({
-      trigger: item,
-      start: 'top top',
-      end: 'bottom top',
-      pin: image,
-      pinSpacing: false
-    });
-  }else{
-    ScrollTrigger.create({
-      trigger: item,
-      start: 'top top',
-      end: 'top top',
-      pin: image,
-      pinSpacing: false
-    });
-  }
-
-  
 });
 
+area.addEventListener('mouseleave', () => {
+  gsap.to(shadow, {
+    x: 0,
+    y: 0,
+    duration: 0.6,
+    ease: 'power3.out'
+  });
+}); */
 
 
-    /* ------------------카드 겹치기 (자재유통 부분)-------------------------- */
-    const listItems = document.querySelectorAll('.fixContent > p');
-    // p가 처음에는 opacity가 0이었다가, 스크롤이 일정 지점에 도달하면 opacity가 1로 바뀌고 위치를 fix하여 화면 상단에 고정시키고 다음 p가 나타나면 앞전 p위에 겹쳐지는 효과
+const box = document.querySelector(".shadow");
+const intro = document.querySelector(".intro");
 
-    // function cardOverlap() {
-    //   const trigger = window.innerHeight * 0.75;
+intro.addEventListener("mousemove", (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 50;
+  const y = (e.clientY / window.innerHeight - 0.5) * 50;
 
-    //   listItems.forEach((item, index) => {
-    //     const rect = item.getBoundingClientRect();
+  gsap.to(box, {
+    x,
+    y,
+    duration: 0.6,
+    ease: "power3.out"
+  });
+});
 
-    //     item.style.zIndex = index + 1;
-
-    //     if (rect.top <= trigger) {
-    //       item.classList.add('active');
-    //     } else {
-    //       item.classList.remove('active');
-    //     }
-    //   });
-    // }
-
-    // window.addEventListener('scroll', cardOverlap);
-    // cardOverlap();
-  })
+intro.addEventListener("mouseleave", () => {
+  gsap.to(box, {
+    x: 0,
+    y: 0,
+    duration: 0.8,
+    ease: "power3.out"
+  });
+});

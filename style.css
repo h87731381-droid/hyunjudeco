@@ -30,19 +30,73 @@ header .headerInner > a span {
   color: #929292;
 }
 header .headerInner nav {
+  position: relative;
+}
+header .headerInner nav .pcMenu {
   display: flex;
-  align-items: center;
+  align-items: end;
   gap: 40px;
 }
-header .headerInner nav > a {
+@media (max-width: 991px) {
+  header .headerInner nav .pcMenu {
+    display: none;
+  }
+}
+header .headerInner nav .pcMenu > a {
   font-family: "NanumSquareNeoBold";
   font-size: 17px;
   color: #111;
   text-decoration: none;
   transition: 0.3s;
 }
-header .headerInner nav > a:hover {
+header .headerInner nav .pcMenu > a:hover {
   color: #1c6eda;
+}
+header .headerInner nav .menu {
+  width: 30px;
+  height: 20px;
+  transform: scaleX(-1);
+  display: none;
+}
+@media (max-width: 991px) {
+  header .headerInner nav .menu {
+    display: block;
+  }
+}
+header .headerInner nav .menu:hover {
+  cursor: pointer;
+}
+header .headerInner nav .menu.menu-1 {
+  top: 30%;
+  left: 50%;
+}
+header .headerInner nav .menu.menu-1 .menu-item {
+  background: black;
+  display: block;
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+header .headerInner nav .menu.menu-1 .menu-item:first-child {
+  transform: translateY(-8px);
+}
+header .headerInner nav .menu.menu-1 .menu-item:nth-child(2) {
+  transform: translateY(0px);
+  width: 60%;
+}
+header .headerInner nav .menu.menu-1 .menu-item:nth-child(3) {
+  transform: translateY(8px);
+}
+header .headerInner nav .menu.menu-1.open > span:first-child {
+  transform: translateY(0px) rotate(45deg);
+}
+header .headerInner nav .menu.menu-1.open > span:nth-child(2) {
+  opacity: 0;
+}
+header .headerInner nav .menu.menu-1.open > span:nth-child(3) {
+  transform: translateY(0px) rotate(-45deg);
 }
 header.active {
   transform: translateY(-100%);
@@ -57,59 +111,88 @@ header.active {
   position: relative;
   max-width: 1600px;
   width: 100%;
-  height: 75vh;
+  height: 100vh;
   margin: 0 auto;
   padding: 0 60px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  z-index: 10;
+}
+@media (max-width: 991px) {
+  .intro .introInner {
+    transform: translateY(-200px);
+  }
+}
+.intro .introInner .mainAbsolute img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
 }
 .intro .introInner .mainAbsolute {
   position: absolute;
-  top: 0;
+  top: calc(50% - 110px);
+  transform: translateY(-50%);
   right: 60px;
   width: 55%;
-  height: calc(80vh - 117px);
-  padding-top: 117px;
+}
+@media (max-width: 991px) {
+  .intro .introInner .mainAbsolute {
+    top: auto;
+    bottom: 0;
+    transform: none;
+    padding: 0;
+    right: 0;
+    width: 90%;
+  }
 }
 .intro .introInner .mainAbsolute .mainImg {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 2%;
+  bottom: 0px;
+  left: -20px;
   width: 100%;
   height: auto;
+  z-index: 1;
 }
 .intro .introInner .mainAbsolute .shadow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(calc(-50% - 10px));
-  right: 0;
+  position: relative;
   width: 100%;
-  z-index: -1;
+  vertical-align: middle;
 }
 .intro .introInner .mainAbsolute .arrowBottom {
-  position: absolute;
   bottom: 0;
   right: 0;
-  z-index: 10;
+  width: 20%;
+  z-index: 3;
 }
 .intro .introInner .main {
   z-index: 1;
+  transform: translateY(-110px);
 }
 .intro .introInner .main .mainTitle > p {
   color: #666666;
   font-size: 22px;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
 }
 .intro .introInner .main .mainTitle > div {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+@media (max-width: 991px) {
+  .intro .introInner .main .mainTitle > div {
+    flex-direction: row;
+  }
+}
 .intro .introInner .main .mainTitle > div > b {
-  font-size: 60px;
+  font-size: clamp(1rem, 4vw, 60px);
+}
+@media (max-width: 991px) {
+  .intro .introInner .main .mainTitle > div > b {
+    font-size: 1.8rem;
+  }
 }
 .intro .introInner .main > button {
   position: relative;
@@ -255,6 +338,8 @@ header.active {
 .info .infoInner .fixContent .infoText .infoDetail > figure > figcaption {
   padding: 30px 0;
   color: #666666;
+  width: 52%;
+  margin: 0 auto;
 }
 .info .infoInner .fixContent .infoText > button {
   display: flex;
@@ -312,7 +397,7 @@ header.active {
 }
 .apply .applyContent .applyText {
   max-width: 598px;
-  padding-bottom: 30px;
+  padding-bottom: 60px;
 }
 .apply .applyContent .applyText > b {
   font-size: 40px;
@@ -322,6 +407,7 @@ header.active {
   font-size: 18px;
   font-family: "NanumSquareNeoBold";
   line-height: 1.6;
+  padding-top: 30px;
 }
 .apply .applyContent > button {
   color: white;

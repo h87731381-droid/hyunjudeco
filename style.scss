@@ -23,6 +23,11 @@ header {
 
     box-sizing: border-box;
 
+    @media (max-width:991px) {
+      height: 80px;
+    }
+
+    // 로고
     >a {
       font-family: 'NanumSquareNeoHeavy';
       font-size: 20px;
@@ -34,23 +39,98 @@ header {
       }
     }
 
+    // 네비게이션
     nav {
-      display: flex;
-      align-items: center;
-      gap: 40px;
+      position: relative;
 
-      >a {
-        font-family: 'NanumSquareNeoBold';
-        font-size: 17px;
-        color: #111;
-        text-decoration: none;
-        transition: .3s;
+      // PC 메뉴
+      .pcMenu {
+        display: flex;
+        align-items: end;
+        gap: 40px;
+
+        @media (max-width:991px) {
+          display: none;
+        }
+
+        >a {
+          font-family: 'NanumSquareNeoBold';
+          font-size: 17px;
+          color: #111;
+          text-decoration: none;
+          transition: .3s;
+
+          &:hover {
+            color: #1c6eda;
+          }
+        }
+      }
+
+      // 버거 메뉴 (991px 이하)
+      $menu-width: 30px;
+      $menu-height: 20px;
+
+      .menu {
+        width: $menu-width;
+        height: $menu-height;
+        transform: scaleX(-1);
+        display: none;
+
+        @media (max-width:991px) {
+          display: block;
+        }
 
         &:hover {
-          color: #1c6eda;
+          cursor: pointer;
+        }
+      }
+
+      .menu.menu-1 {
+        //position: absolute;
+        top: 30%;
+        left: 50%;
+
+        .menu-item {
+          background: black;
+          display: block;
+          width: 100%;
+          height: 2px;
+          position: absolute;
+          left: 0;
+          top: 50%;
+
+          &:first-child {
+            transform: translateY(-8px);
+          }
+
+          &:nth-child(2) {
+            transform: translateY(0px);
+            width: 60%;
+          }
+
+          &:nth-child(3) {
+            transform: translateY(8px);
+          }
+
+        }
+
+        &.open {
+          &>span:first-child {
+            transform: translateY(0px) rotate(45deg);
+          }
+
+          &>span:nth-child(2) {
+            opacity: 0;
+          }
+
+          &>span:nth-child(3) {
+            transform: translateY(0px) rotate(-45deg);
+          }
         }
       }
     }
+
+
   }
 
   &.active {
@@ -70,57 +150,78 @@ header {
     position: relative;
     max-width: 1600px;
     width: 100%;
-    height: 75vh;
+    height: 100vh;
     margin: 0 auto;
     padding: 0 60px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    z-index: 10;
+
+    @media (max-width:991px) {
+      transform: translateY(-200px);
+    }
+
+    // 공중에 띄운 이미지들
+    .mainAbsolute img {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+    }
 
     .mainAbsolute {
       position: absolute;
-      top: 0;
+      top: calc(50% - 110px);
+      transform: translateY(-50%);
       right: 60px;
       width: 55%;
-      height: calc(80vh - 117px);
-      padding-top: 117px;
+
+      @media (max-width:991px) {
+        // 공중에 띄운거 다시 내리기
+        top: auto;
+        bottom: 0;
+        transform: none;
+        padding: 0;
+        right: 0;
+        width: 90%;
+      }
 
       .mainImg {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        right: 2%;
+        bottom: 0px;
+        left: -20px;
         width: 100%;
         height: auto;
+        z-index: 1;
       }
 
       .shadow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(calc(-50% - 10px));
-        right: 0;
+        position: relative;
         width: 100%;
-        z-index: -1;
+        vertical-align: middle;
       }
 
       .arrowBottom {
-        position: absolute;
         bottom: 0;
         right: 0;
-        z-index: 10;
+        width: 20%;
+        z-index: 3;
       }
     }
 
+    // 인트로 부분 문구
     .main {
       z-index: 1;
+      transform: translateY(-110px);
 
       .mainTitle {
 
         >p {
           color: #666666;
           font-size: 22px;
-          padding-bottom: 20px;
+          padding-bottom: 50px;
         }
 
         >div {
@@ -128,8 +229,16 @@ header {
           flex-direction: column;
           gap: 20px;
 
+          @media (max-width:991px) {
+            flex-direction: row;
+          }
+
           >b {
-            font-size: 60px;
+            font-size: clamp(1rem, 4vw, 60px);
+
+            @media (max-width:991px) {
+              font-size: 1.8.rem;
+            }
           }
         }
       }
@@ -276,13 +385,13 @@ header {
   padding-top: 200px;
 
   .infoInner {
-    
+
 
     .fixContent {
       position: relative;
       display: flex;
       justify-content: space-between;
-      height:100vh;
+      height: 100vh;
 
       .infoText {
         width: 50%;
@@ -303,6 +412,7 @@ header {
           >figure {
             padding-top: 40px;
 
+
             >img {
               height: 100%;
             }
@@ -310,6 +420,8 @@ header {
             >figcaption {
               padding: 30px 0;
               color: #666666;
+              width: 52%;
+              margin: 0 auto;
             }
           }
 
@@ -383,7 +495,7 @@ header {
 
     .applyText {
       max-width: 598px;
-      padding-bottom: 30px;
+      padding-bottom: 60px;
 
       >b {
         font-size: 40px;
@@ -394,6 +506,7 @@ header {
         font-size: 18px;
         font-family: 'NanumSquareNeoBold';
         line-height: 1.6;
+        padding-top: 30px;
       }
     }
 
