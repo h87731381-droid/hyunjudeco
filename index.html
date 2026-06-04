@@ -7,6 +7,9 @@
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./common.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis"></script>
@@ -50,8 +53,8 @@
                 <div class="mainTitle">
                     <p>편리함으로 통합되는 주거공간</p>
                     <div>
-                        <b>다양한 인테리어 서비스를 통해</b>
-                        <b>행복한 공간을 만들어 갑니다</b>
+                        <b>다양한 인테리어 서비스를 통해
+                        <br class="mainTitleBr">행복한 공간을 만들어 갑니다</b>
                     </div>
                 </div>
                 <button>
@@ -79,14 +82,14 @@
             <div class="aboutInner">
                 <div class="aboutTtitle">
                     <b>모두가 공간과 삶에 행복을 채워갈 수 있도록
-                        <br>인테리어 경험을 제공합니다</b>
+                        <br class="aboutTitleBr">인테리어 경험을 제공합니다</b>
                 </div>
                 <div class="aboutFigure">
-                    <figure class="aboutInfo parallax">
+                    <figure class="aboutInfo parallax card">
                         <p><img src="./images/room-1.jpg" alt=""></p>
                         <figcaption>현주데코는 인테리어를 하며 떠오르는 의문과 걱정을 해소할 수 있도록 다양한 시도를 통해 변화를 주도합니다.</figcaption>
                     </figure>
-                    <figure class="aboutInfo parallax">
+                    <figure class="aboutInfo parallax card">
                         <p><img src="./images/room-2.jpg" alt=""></p>
                         <figcaption>우리는 많은 시간을 주거 공간에서 보냅니다. 집은 삶의 만족과 안정감을 줄 뿐 아니라, 나를 표현하고 취향을 드러내는 공간입니다.
                         </figcaption>
@@ -116,7 +119,10 @@
      =================================== -->
 
     <section class="apply">
-        <img src="./images/Rectangle 9.jpg" alt="">
+        <picture>
+            <source media="(max-width: 991px)" srcset="./images/Rectangle9_m.jpg">
+            <img src="./images/Rectangle 9.jpg" alt="">
+        </picture>
         <div class="applyContent">
             <div class="applyText">
                 <b>현주데코와 함께 공간과<br>일상의 변화를 만들어 보세요</b>
@@ -142,7 +148,7 @@
         <div class="bottomNav">
             <div class="footerTitle">
                 <p>인테리어를 통해 행복한 공간과
-                    <br>경험을 제공하는 <b>현주데코</b>
+                    <br class="footerTitleBr">경험을 제공하는 <b>현주데코</b>
                 </p>
             </div>
             <ul>
@@ -163,7 +169,7 @@
                 </dl>
                 <dl>
                     <dt>주소</dt>
-                    <dd>서울 00구 00로 123 00빌딩</dd>
+                    <dd>서울 00구 00로 123 00빌딩 00층</dd>
                 </dl>
                 <dl>
                     <dt>문의</dt>

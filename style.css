@@ -1,12 +1,11 @@
 @charset "UTF-8";
 @import url(./common.css);
-/* 헤더 */
+/* -----------------헤더------------------ */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background: #fff;
   z-index: 100;
   transition: 0.4s;
 }
@@ -19,6 +18,16 @@ header .headerInner {
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+}
+@media (max-width: 991px) {
+  header .headerInner {
+    height: 55px;
+  }
+}
+@media (max-width: 767px) {
+  header .headerInner {
+    padding: 0 20px;
+  }
 }
 header .headerInner > a {
   font-family: "NanumSquareNeoHeavy";
@@ -39,6 +48,19 @@ header .headerInner nav .pcMenu {
 }
 @media (max-width: 991px) {
   header .headerInner nav .pcMenu {
+    opacity: 0;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    width: 100vw;
+    height: 90vh;
+    padding: 40px 50px 0;
     display: none;
   }
 }
@@ -52,9 +74,26 @@ header .headerInner nav .pcMenu > a {
 header .headerInner nav .pcMenu > a:hover {
   color: #1c6eda;
 }
+@media (max-width: 991px) {
+  header .headerInner nav .pcMenu > a {
+    font-size: 28px;
+  }
+}
+header .headerInner nav .pcMenu.open {
+  display: flex;
+  animation: mobile 0.5s forwards;
+}
+@keyframes mobile {
+  100% {
+    opacity: 1;
+  }
+}
+header .headerInner nav {
+  /* ----버거 메뉴 (991px 이하)----- */
+}
 header .headerInner nav .menu {
   width: 30px;
-  height: 20px;
+  height: 30px;
   transform: scaleX(-1);
   display: none;
 }
@@ -66,10 +105,6 @@ header .headerInner nav .menu {
 header .headerInner nav .menu:hover {
   cursor: pointer;
 }
-header .headerInner nav .menu.menu-1 {
-  top: 30%;
-  left: 50%;
-}
 header .headerInner nav .menu.menu-1 .menu-item {
   background: black;
   display: block;
@@ -78,13 +113,14 @@ header .headerInner nav .menu.menu-1 .menu-item {
   position: absolute;
   left: 0;
   top: 50%;
+  transition: 0.5s;
 }
 header .headerInner nav .menu.menu-1 .menu-item:first-child {
   transform: translateY(-8px);
 }
 header .headerInner nav .menu.menu-1 .menu-item:nth-child(2) {
   transform: translateY(0px);
-  width: 60%;
+  width: 70%;
 }
 header .headerInner nav .menu.menu-1 .menu-item:nth-child(3) {
   transform: translateY(8px);
@@ -102,7 +138,7 @@ header.active {
   transform: translateY(-100%);
 }
 
-/* 메인(인트로) */
+/* -----------------------메인(인트로)------------------------- */
 .intro {
   padding-top: 120px;
   padding-bottom: 10%;
@@ -122,7 +158,12 @@ header.active {
 }
 @media (max-width: 991px) {
   .intro .introInner {
-    transform: translateY(-200px);
+    transform: translateY(-250px);
+  }
+}
+@media (max-width: 767px) {
+  .intro .introInner {
+    padding: 0 20px;
   }
 }
 .intro .introInner .mainAbsolute img {
@@ -142,7 +183,7 @@ header.active {
   .intro .introInner .mainAbsolute {
     top: auto;
     bottom: 0;
-    transform: none;
+    transform: translateY(30%);
     padding: 0;
     right: 0;
     width: 90%;
@@ -162,10 +203,15 @@ header.active {
   vertical-align: middle;
 }
 .intro .introInner .mainAbsolute .arrowBottom {
-  bottom: 0;
-  right: 0;
+  bottom: -5%;
+  right: -2%;
   width: 20%;
   z-index: 3;
+}
+@media (max-width: 991px) {
+  .intro .introInner .mainAbsolute .arrowBottom {
+    display: none;
+  }
 }
 .intro .introInner .main {
   z-index: 1;
@@ -176,18 +222,26 @@ header.active {
   font-size: 22px;
   padding-bottom: 50px;
 }
-.intro .introInner .main .mainTitle > div {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+@media (max-width: 991px) {
+  .intro .introInner .main .mainTitle > p {
+    padding-bottom: 30px;
+  }
+}
+@media (max-width: 767px) {
+  .intro .introInner .main .mainTitle > p {
+    font-size: 16px;
+    padding-bottom: 20px;
+  }
 }
 @media (max-width: 991px) {
-  .intro .introInner .main .mainTitle > div {
-    flex-direction: row;
+  .intro .introInner .main .mainTitle > div .mainTitleBr {
+    display: none;
   }
 }
 .intro .introInner .main .mainTitle > div > b {
   font-size: clamp(1rem, 4vw, 60px);
+  letter-spacing: 0.05em;
+  line-height: 1.8;
 }
 @media (max-width: 991px) {
   .intro .introInner .main .mainTitle > div > b {
@@ -202,14 +256,19 @@ header.active {
   font-size: 18px;
   color: #1c6eda;
 }
+@media (max-width: 991px) {
+  .intro .introInner .main > button {
+    padding-top: 60px;
+    gap: 0;
+  }
+}
+@media (max-width: 767px) {
+  .intro .introInner .main > button {
+    padding-top: 30px;
+  }
+}
 .intro .introInner .main > button > span {
   font-family: "NanumSquareNeoBold";
-}
-.intro .introInner .main {
-  /* button::after {
-    content: '';
-    화살표 svg 들어가는 곳
-  } */
 }
 .intro .introInner .main > button::before {
   content: "";
@@ -224,21 +283,38 @@ header.active {
   transition: 0.3s;
   z-index: -1;
 }
+@media (max-width: 991px) {
+  .intro .introInner .main > button::before {
+    bottom: -10px;
+    left: 78px;
+    width: 40px;
+    height: 40px;
+  }
+}
 .intro .introInner .main > button:hover::before {
   transform: scale(1.4);
 }
+@media (max-width: 991px) {
+  .intro .introInner .main > button:hover::before {
+    transform: none;
+  }
+}
 
-/* 배경 그라데이션 */
+/* ---------------배경 그라데이션(회사 소개부분)---------------------- */
 .backColor {
   background: linear-gradient(180deg, #fff 0%, #F4F0EA 75.64%);
   overflow: hidden;
   z-index: -2;
 }
 
-/* 회사소개 */
+/* -----------------------회사소개------------------------- */
 .about {
-  padding-top: 100px;
-  height: 150vh;
+  padding-bottom: 70vh;
+}
+@media (max-width: 991px) {
+  .about {
+    padding: 30px 0 50vh 0;
+  }
 }
 .about .aboutInner {
   position: relative;
@@ -246,6 +322,11 @@ header.active {
   margin: 0 auto;
   padding: 0 60px;
   box-sizing: border-box;
+}
+@media (max-width: 767px) {
+  .about .aboutInner {
+    padding: 0 20px;
+  }
 }
 .about .aboutInner .aboutTtitle {
   position: absolute;
@@ -258,16 +339,68 @@ header.active {
   width: 100%;
   z-index: 1;
 }
+@media (max-width: 991px) {
+  .about .aboutInner .aboutTtitle {
+    position: static;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+}
 .about .aboutInner .aboutTtitle > b {
   font-size: 39px;
   line-height: 1.5;
+}
+@media (max-width: 1200px) {
+  .about .aboutInner .aboutTtitle > b {
+    font-size: 3.2vw;
+  }
+}
+@media (max-width: 767px) {
+  .about .aboutInner .aboutTtitle > b {
+    width: 100%;
+    max-width: 1520px;
+    padding: 0 40px;
+    box-sizing: border-box;
+    font-size: 26px;
+    line-height: 1.8;
+    font-family: "NanumSquareNeoLight";
+  }
+}
+@media (max-width: 767px) {
+  .about .aboutInner .aboutTtitle > b .aboutTitleBr {
+    display: none;
+  }
 }
 .about .aboutInner .aboutFigure {
   display: flex;
   justify-content: space-between;
 }
+@media (max-width: 991px) {
+  .about .aboutInner .aboutFigure {
+    flex-wrap: wrap;
+  }
+}
 .about .aboutInner .aboutFigure .aboutInfo {
-  width: 472px;
+  width: 33%;
+}
+@media (max-width: 991px) {
+  .about .aboutInner .aboutFigure .aboutInfo {
+    width: 75%;
+    padding-top: 60px;
+  }
+}
+@media (max-width: 991px) {
+  .about .aboutInner .aboutFigure .aboutInfo:nth-child(2) {
+    margin-left: auto;
+    padding-top: 100px;
+  }
+}
+@media (max-width: 390px) {
+  .about .aboutInner .aboutFigure .aboutInfo:nth-child(2) {
+    margin-left: auto;
+    padding-top: 150px;
+  }
 }
 .about .aboutInner .aboutFigure .aboutInfo > p {
   width: 100%;
@@ -283,7 +416,7 @@ header.active {
   margin-top: 40px;
 }
 
-/* 사업소개 타이틀 */
+/* -----------------------사업소개 타이틀-------------------------- */
 .bizTitle {
   position: relative;
   text-align: center;
@@ -291,31 +424,74 @@ header.active {
 }
 .bizTitle > b {
   font-size: 42px;
+  line-height: 1.5;
   z-index: 1;
+}
+@media (max-width: 1199px) {
+  .bizTitle > b {
+    font-size: 3.5vw;
+  }
+}
+@media (max-width: 767px) {
+  .bizTitle > b {
+    font-size: 26px;
+  }
 }
 .bizTitle > span {
   position: absolute;
-  top: 200px;
-  left: -40%;
+  top: 300px;
+  left: -24%;
   right: 0;
-  height: 180%;
+  height: 250%;
   min-height: 180vh;
-  min-width: 180%;
+  min-width: 150%;
   margin: 0 auto;
   background: #fff;
-  border-radius: 5000px 5000px 0 0;
+  border-radius: 3000px 3000px 0 0;
   z-index: -1;
 }
+@media (max-width: 1199px) {
+  .bizTitle > span {
+    top: 150px;
+    left: -50%;
+    min-height: 300vh;
+    min-width: 200%;
+  }
+}
+@media (max-width: 991px) {
+  .bizTitle > span {
+    top: 300px;
+    left: 0;
+    min-height: 100vh;
+    min-width: 100%;
+  }
+}
+@media (max-width: 910px) {
+  .bizTitle > span {
+    top: 200px;
+  }
+}
+@media (max-width: 680px) {
+  .bizTitle > span {
+    top: 100px;
+  }
+}
 
-/* 사업소개 */
+/* -----------------------사업소개------------------------ */
 .info {
-  padding-top: 200px;
+  padding-top: 100px;
 }
 .info .infoInner .fixContent {
   position: relative;
   display: flex;
   justify-content: space-between;
   height: 100vh;
+}
+@media (max-width: 1199px) {
+  .info .infoInner .fixContent {
+    flex-direction: column-reverse;
+    height: auto;
+  }
 }
 .info .infoInner .fixContent .infoText {
   width: 50%;
@@ -326,24 +502,76 @@ header.active {
   text-align: center;
   line-height: 1.7;
 }
+@media (max-width: 1199px) {
+  .info .infoInner .fixContent .infoText {
+    width: 100%;
+    text-align: left;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px 120px 0;
+    box-sizing: border-box;
+  }
+}
+@media (max-width: 767px) {
+  .info .infoInner .fixContent .infoText {
+    padding: 20px 60px 0;
+  }
+}
+.info .infoInner .fixContent .infoText .infoDetail {
+  display: flex;
+  flex-direction: column;
+}
 .info .infoInner .fixContent .infoText .infoDetail > b {
   font-size: 32px;
 }
-.info .infoInner .fixContent .infoText .infoDetail > figure {
+@media (max-width: 1199px) {
+  .info .infoInner .fixContent .infoText .infoDetail > b {
+    font-size: 2.6vw;
+  }
+}
+@media (max-width: 767px) {
+  .info .infoInner .fixContent .infoText .infoDetail > b {
+    font-size: 22px;
+  }
+}
+.info .infoInner .fixContent .infoText .infoDetail > picture {
   padding-top: 40px;
 }
-.info .infoInner .fixContent .infoText .infoDetail > figure > img {
-  height: 100%;
+@media (max-width: 1199px) {
+  .info .infoInner .fixContent .infoText .infoDetail > picture {
+    padding-top: 0;
+  }
 }
-.info .infoInner .fixContent .infoText .infoDetail > figure > figcaption {
+@media (max-width: 1199px) {
+  .info .infoInner .fixContent .infoText .infoDetail > picture > img {
+    display: none;
+  }
+}
+.info .infoInner .fixContent .infoText .infoDetail > picture > div {
   padding: 30px 0;
   color: #666666;
   width: 52%;
   margin: 0 auto;
 }
+@media (max-width: 1199px) {
+  .info .infoInner .fixContent .infoText .infoDetail > picture > div {
+    width: 100%;
+    padding: 20px 0;
+  }
+}
+@media (max-width: 767px) {
+  .info .infoInner .fixContent .infoText .infoDetail > picture > div {
+    font-size: 15px;
+  }
+}
 .info .infoInner .fixContent .infoText > button {
   display: flex;
   color: #1c6eda;
+}
+@media (max-width: 1199px) {
+  .info .infoInner .fixContent .infoText > button {
+    padding-bottom: 80px;
+  }
 }
 .info .infoInner .fixContent .infoText > button > span {
   font-size: 14px;
@@ -353,16 +581,30 @@ header.active {
   height: 20px;
 }
 .info .infoInner .fixContent p {
-  width: 50%;
-  height: 100vh;
   position: absolute;
   top: 0;
   right: 0;
+  width: 50%;
+  height: 100vh;
   overflow: hidden;
   transition: opacity 0.5s ease;
 }
 .info .infoInner .fixContent p.active {
   opacity: 1;
+}
+@media (max-width: 1199px) {
+  .info .infoInner .fixContent p {
+    position: static;
+    width: 100%;
+    height: auto;
+    z-index: -1;
+    padding-left: 120px;
+  }
+}
+@media (max-width: 767px) {
+  .info .infoInner .fixContent p {
+    padding-left: 60px;
+  }
 }
 .info .infoInner .fixContent p > img {
   width: 100%;
@@ -371,15 +613,38 @@ header.active {
      object-fit: cover;
   display: block;
 }
+@media (max-width: 1199px) {
+  .info .infoInner .fixContent p > img {
+    width: 100%;
+    height: auto;
+  }
+}
 
-/* 인재채용 */
+/* -----------------------인재채용------------------------ */
 .apply {
   position: relative;
   color: white;
 }
-.apply > img {
+@media screen and (min-width: 1600px) {
+  .apply {
+    height: 680px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .apply {
+    height: 42vw;
+  }
+}
+@media (max-width: 991px) {
+  .apply {
+    height: 408px;
+  }
+}
+.apply > picture > img {
   width: 100%;
   height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .apply .applyContent {
   position: absolute;
@@ -395,6 +660,11 @@ header.active {
     width: 100%;
   }
 }
+@media (max-width: 767px) {
+  .apply .applyContent {
+    padding: 0 20px;
+  }
+}
 .apply .applyContent .applyText {
   max-width: 598px;
   padding-bottom: 60px;
@@ -403,17 +673,48 @@ header.active {
   font-size: 40px;
   line-height: 1.6;
 }
+@media (max-width: 991px) {
+  .apply .applyContent .applyText > b {
+    font-size: 3.5vw;
+  }
+}
+@media (max-width: 767px) {
+  .apply .applyContent .applyText > b {
+    font-size: 23px;
+  }
+}
 .apply .applyContent .applyText > p {
   font-size: 18px;
   font-family: "NanumSquareNeoBold";
   line-height: 1.6;
   padding-top: 30px;
 }
+@media (max-width: 991px) {
+  .apply .applyContent .applyText > p {
+    max-width: 391px;
+  }
+}
+@media (max-width: 767px) {
+  .apply .applyContent .applyText > p {
+    font-size: 16px;
+    font-family: "NanumSquareNeo";
+  }
+}
 .apply .applyContent > button {
   color: white;
   display: flex;
   gap: 5px;
   font-family: "NanumSquareNeoBold";
+}
+@media (max-width: 991px) {
+  .apply .applyContent > button {
+    gap: 0;
+  }
+}
+@media (max-width: 767px) {
+  .apply .applyContent > button {
+    font-size: 15px;
+  }
 }
 .apply .applyContent > button::before {
   content: "";
@@ -428,27 +729,71 @@ header.active {
   transition: 0.3s;
   z-index: -1;
 }
+@media (max-width: 991px) {
+  .apply .applyContent > button::before {
+    bottom: -9.5px;
+    left: 177px;
+    width: 40px;
+    height: 40px;
+  }
+}
+@media (max-width: 767px) {
+  .apply .applyContent > button::before {
+    bottom: -9px;
+    left: 129px;
+  }
+}
 .apply .applyContent > button:hover::before {
   transform: scale(1.4);
 }
+@media (max-width: 991px) {
+  .apply .applyContent > button:hover::before {
+    transform: none;
+  }
+}
 
-/* 푸터 */
+/* -----------------------푸터------------------------ */
 footer {
   max-width: 1600px;
   padding: 80px 60px 100px;
   margin: 0 auto;
   box-sizing: border-box;
 }
+@media (max-width: 767px) {
+  footer {
+    padding: 60px 20px;
+  }
+}
 footer .bottomNav {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  padding-bottom: 100px;
+  padding-bottom: 80px;
+}
+@media (max-width: 1599px) {
+  footer .bottomNav {
+    padding-bottom: 0;
+  }
 }
 footer .bottomNav .footerTitle > p {
   font-size: 40px;
   line-height: 1.7;
-  font-family: "NanumSquareNeoLight";
+}
+@media (max-width: 1120px) {
+  footer .bottomNav .footerTitle > p {
+    font-size: 3.5vw;
+  }
+}
+@media (max-width: 767px) {
+  footer .bottomNav .footerTitle > p {
+    font-size: 24px;
+    padding-bottom: 30px;
+  }
+}
+@media (max-width: 767px) {
+  footer .bottomNav .footerTitle > p .footerTitleBr {
+    display: none;
+  }
 }
 footer .bottomNav .footerTitle > p > b {
   font-family: "NanumSquareNeoBold";
@@ -458,40 +803,121 @@ footer .bottomNav > ul {
   flex-direction: column;
   gap: 25px;
   font-family: "NanumSquareNeoBold";
+  font-size: 15px;
   text-align: end;
+}
+@media (max-width: 767px) {
+  footer .bottomNav > ul {
+    display: none;
+  }
 }
 footer .add {
   display: flex;
   justify-content: space-between;
+  align-items: end;
+}
+@media (max-width: 767px) {
+  footer .add {
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
+  }
 }
 footer .add > address {
   display: flex;
   gap: 30px;
 }
+@media (max-width: 1599px) {
+  footer .add > address {
+    flex-direction: column;
+    gap: 0;
+  }
+}
 footer .add > address > dl {
-  line-height: 1.8;
-  font-size: 14px;
+  line-height: 2.5;
+}
+@media (max-width: 1599px) {
+  footer .add > address > dl {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+  }
+}
+@media (max-width: 767px) {
+  footer .add > address > dl {
+    line-height: 2;
+  }
 }
 footer .add > address > dl > dt {
   color: #666666;
 }
+@media (max-width: 1599px) {
+  footer .add > address > dl > dt {
+    color: #999999;
+  }
+}
 footer .add > address > dl > dd {
   font-family: "NanumSquareNeoBold";
+  font-size: 15px;
+}
+@media (max-width: 1599px) {
+  footer .add > address > dl > dd {
+    font-family: "NanumSquareNeo";
+    font-size: 13px;
+  }
 }
 footer .add .copyright {
   line-height: 1.8;
   text-align: end;
 }
+@media (max-width: 767px) {
+  footer .add .copyright {
+    text-align: left;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 40px;
+  }
+}
 footer .add .copyright > div {
   font-size: 13px;
+  margin-bottom: 10px;
+}
+@media (max-width: 767px) {
+  footer .add .copyright > div {
+    font-size: 15px;
+  }
 }
 footer .add .copyright > div > a:nth-of-type(1) {
   font-family: "NanumSquareNeoBold";
   color: #444444;
+  padding-right: 10px;
+}
+@media (max-width: 767px) {
+  footer .add .copyright > div > a:nth-of-type(1) {
+    padding-right: 30px;
+  }
 }
 footer .add .copyright > div > a:nth-of-type(2) {
   color: #666666;
 }
+@media (max-width: 767px) {
+  footer .add .copyright > div > a:nth-of-type(2) {
+    color: #222222;
+  }
+}
 footer .add .copyright > small {
   color: #666666;
+}
+
+/* --------------------애니메이션--------------------------------- */
+@media (max-width: 991px) {
+  .card {
+    opacity: 0;
+    transition: 0.9s;
+    transform: translateY(30%);
+  }
+  .card.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }/*# sourceMappingURL=style.css.map */

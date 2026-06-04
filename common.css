@@ -1,14 +1,12 @@
 @import url('https://hangeul.pstatic.net/hangeul_static/css/nanum-square-neo.css');
 
+html {overflow-x: hidden;}
+
 body {
-    /* background: linear-gradient(
-    to bottom,
-    #ffffff 0%,
-    #e4e0da 80%,
-    #e4e0da 100%
-  ); */
   font-family: 'NanumSquareNeo';
   margin: 0;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 a {
