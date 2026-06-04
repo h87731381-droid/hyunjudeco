@@ -236,8 +236,6 @@ fetch('./infoList.json')
     //1199px 이하
     mm.add("(max-width: 1199px)", () => {
 
-      //ScrollTrigger.getAll().forEach(st => st.kill()); //다른 애들 죽여버림
-
       const items = gsap.utils.toArray('.fixContent .infoText, .fixContent p ');
 
       items.forEach((item) => {

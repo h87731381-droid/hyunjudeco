@@ -259,7 +259,7 @@ header {
         >p {
           color: #666666;
           font-size: 22px;
-          padding-bottom: 50px;
+          padding-bottom: 20px;
 
           @media (max-width:991px) {
             padding-bottom: 30px;
@@ -282,7 +282,7 @@ header {
           >b {
             font-size: clamp(1rem, 4vw, 60px);
             letter-spacing: 0.05em;
-            line-height: 1.8;
+            line-height: 1.5;
 
             @media (max-width:991px) {
               font-size: 1.8rem;
@@ -981,8 +981,67 @@ footer {
 
 
 /* --------------------애니메이션--------------------------------- */
-.card {
 
+//인트로 이미지
+.mainAbsolute {
+  opacity: 0;
+  animation: mainImg 2.5s forwards;
+}
+
+@keyframes mainImg {
+  0% {
+    transform: translateY(-50%) translateX(50px);
+  }
+
+  100% {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+//인트로 문구
+
+/* ------p------- */
+.mainTitle >p {
+  opacity: 0;
+  animation: titleP 1s forwards;
+}
+@keyframes titleP {
+  0% {transform: translateY(50%);}
+  100% {transform: translateY(0); opacity: 1;}
+}
+
+
+/* ------b------ */
+.mainTitle >div >b {
+  opacity: 0;
+  display: inline-block;
+  animation: titleb 1.5s forwards;
+}
+@keyframes titleb {
+  0% {transform: translateY(50%);}
+  100% {transform: translateY(0); opacity: 1;}
+}
+
+
+/* ------button------- */
+.main >button {
+  opacity: 0;
+  animation: button 2s forwards;
+}
+@keyframes button {
+  100% {opacity: 1;}
+}
+
+
+
+
+
+//회사소개 구간
+.card {
   @media (max-width: 991px) {
     opacity: 0;
     transition: 0.9s;

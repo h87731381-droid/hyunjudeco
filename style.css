@@ -220,7 +220,7 @@ header.active {
 .intro .introInner .main .mainTitle > p {
   color: #666666;
   font-size: 22px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 }
 @media (max-width: 991px) {
   .intro .introInner .main .mainTitle > p {
@@ -241,7 +241,7 @@ header.active {
 .intro .introInner .main .mainTitle > div > b {
   font-size: clamp(1rem, 4vw, 60px);
   letter-spacing: 0.05em;
-  line-height: 1.8;
+  line-height: 1.5;
 }
 @media (max-width: 991px) {
   .intro .introInner .main .mainTitle > div > b {
@@ -910,6 +910,62 @@ footer .add .copyright > small {
 }
 
 /* --------------------애니메이션--------------------------------- */
+.mainAbsolute {
+  opacity: 0;
+  animation: mainImg 2.5s forwards;
+}
+
+@keyframes mainImg {
+  0% {
+    transform: translateY(-50%) translateX(50px);
+  }
+  100% {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+}
+/* ------p------- */
+.mainTitle > p {
+  opacity: 0;
+  animation: titleP 1s forwards;
+}
+
+@keyframes titleP {
+  0% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* ------b------ */
+.mainTitle > div > b {
+  opacity: 0;
+  display: inline-block;
+  animation: titleb 1.5s forwards;
+}
+
+@keyframes titleb {
+  0% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+/* ------button------- */
+.main > button {
+  opacity: 0;
+  animation: button 2s forwards;
+}
+
+@keyframes button {
+  100% {
+    opacity: 1;
+  }
+}
 @media (max-width: 991px) {
   .card {
     opacity: 0;
