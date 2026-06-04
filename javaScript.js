@@ -45,7 +45,10 @@ lenis.on('scroll', ({ direction }) => {
 $(".menu").click(function () {
   $(".pcMenu").toggleClass("open");
   $(this).toggleClass("open");
+  $("body").toggleClass("scrollLock");
 });
+
+
 
 
 

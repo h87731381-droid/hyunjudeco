@@ -141,7 +141,11 @@ header.active {
 /* -----------------------메인(인트로)------------------------- */
 .intro {
   padding-top: 120px;
-  padding-bottom: 10%;
+}
+@media (min-width: 781px) and (max-width: 991px) {
+  .intro {
+    padding-bottom: 150px;
+  }
 }
 .intro .introInner {
   position: relative;
@@ -184,7 +188,6 @@ header.active {
     top: auto;
     bottom: 0;
     transform: translateY(30%);
-    padding: 0;
     right: 0;
     width: 90%;
   }
@@ -260,6 +263,7 @@ header.active {
   .intro .introInner .main > button {
     padding-top: 60px;
     gap: 0;
+    font-size: 16px;
   }
 }
 @media (max-width: 767px) {
@@ -365,6 +369,11 @@ header.active {
     font-size: 26px;
     line-height: 1.8;
     font-family: "NanumSquareNeoLight";
+  }
+}
+@media (max-width: 535px) {
+  .about .aboutInner .aboutTtitle > b {
+    padding: 0;
   }
 }
 @media (max-width: 767px) {
@@ -480,6 +489,7 @@ header.active {
 /* -----------------------사업소개------------------------ */
 .info {
   padding-top: 100px;
+  overflow: hidden;
 }
 .info .infoInner .fixContent {
   position: relative;
@@ -709,6 +719,7 @@ header.active {
 @media (max-width: 991px) {
   .apply .applyContent > button {
     gap: 0;
+    font-size: 15px;
   }
 }
 @media (max-width: 767px) {
@@ -916,18 +927,25 @@ footer .add .copyright > small {
 }
 
 @keyframes mainImg {
-  0% {
+  from {
     transform: translateY(-50%) translateX(50px);
   }
-  100% {
+  to {
     transform: translateY(-50%) translateX(0);
     opacity: 1;
+  }
+}
+@media (max-width: 991px) {
+  .mainAbsolute {
+    opacity: 1;
+    animation: none;
   }
 }
 /* ------p------- */
 .mainTitle > p {
   opacity: 0;
   animation: titleP 1s forwards;
+  animation-delay: 1s;
 }
 
 @keyframes titleP {
@@ -943,12 +961,13 @@ footer .add .copyright > small {
 .mainTitle > div > b {
   opacity: 0;
   display: inline-block;
-  animation: titleb 1.5s forwards;
+  animation: titleb 2s forwards;
+  animation-delay: 1.5s;
 }
 
 @keyframes titleb {
   0% {
-    transform: translateY(50%);
+    transform: translateY(10%);
   }
   100% {
     transform: translateY(0);
@@ -959,6 +978,7 @@ footer .add .copyright > small {
 .main > button {
   opacity: 0;
   animation: button 2s forwards;
+  animation-delay: 1.5s;
 }
 
 @keyframes button {
